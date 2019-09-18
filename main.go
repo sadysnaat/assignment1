@@ -8,6 +8,7 @@ import (
 func main() {
 	r := &response.Response{}
 
+	fmt.Println("Doing some heavy work, please wait a while")
 	res, err := r.WaitTillComplete()
 	if err != nil {
 		fmt.Println(err)
@@ -20,6 +21,7 @@ func main() {
 
 	r2 := &response.Response{}
 
+	fmt.Println("Doing the same heavy work but async, expect result as soon as they are ready")
 	r2.Subscribe(func(result response.Result) {
 		fmt.Println("got", result.Value)
 		r2.AddResult(result)
